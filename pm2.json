@@ -34,7 +34,7 @@
 			"ref"  : "origin/master",
 			"repo" : "git@github.com:jindingyule/buid.git",
 			"path" : "/opt/webroot/test",
-			"post-deploy" : "npm install && pm2 startOrRestart ecosystem.json --env production"
+			"post-deploy" : "npm install && pm2 startOrRestart pm2.json --env production"
 		}
 	}
 }
