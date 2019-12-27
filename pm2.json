@@ -1,0 +1,40 @@
+{
+  "apps": [
+    {
+      "name": "ws",
+      "script": "./cluster.js",
+      "ignore_watch": [
+        "node_modules"
+      ],
+      "error_file": "./logs/err.log",
+      "out_file": "./logs/out.log",
+      "pid_file": "./logs/system/pid/pid.log", //设置pid要写入到哪个文件
+      "max_restarts": 10, //最大异常重启次数，即小于min_uptime运行时间重启次数
+      "max_memory_restart": "100M", //最大内存限制数,超出自动重启
+      "autorestart": false, //默认为true,发生异常的情况下自动重启
+      "merge_logs": true,
+      "watch": true,
+      "env": {
+        "NODE_ENV": "development"
+      },
+      "env_production": {
+        "NODE_ENV": "production"
+      },
+      "instances": 4,
+      "exec_mode": "cluster",
+      "restart_delay" : 5000,
+      "log_date_format" : "YYYY-MM-DD HH:mm Z",
+      "combine_logs" : true
+    }
+  ],
+  "deploy" : {
+		"production" : {
+			"user" : "root",
+			"host" : "47.56.164.92",
+			"ref"  : "origin/master",
+			"repo" : "git@github.com:jindingyule/buid.git",
+			"path" : "/opt/webroot/test",
+			"post-deploy" : "npm install && pm2 startOrRestart ecosystem.json --env production"
+		}
+	}
+}
