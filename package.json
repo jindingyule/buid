@@ -16,7 +16,7 @@
     "express-ip-access-control": "^1.0.5",
     "express-validator": "^6.3.0",
     "koa": "^2.11.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "mongoose": "^5.8.2",
     "nanoid": "^2.1.8"
   },
